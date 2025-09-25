@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { initAudio, play } from '../lib/audio'
 
 /**
- * 🚀 SPACE LEGENDS — KJSSE • SSRP
+ * 🚀 SPACE LEGENDS
  * - Canvas par sab kuch draw hota hai (ship, rocks, stars, meteors, planets)
  * - Physics simple: velocity + wrapping (agar screen se bahar gaya → opposite side se entry)
  * - Controls:
@@ -30,7 +30,7 @@ export default function SpaceLegends() {
   const [gameState, setGameState] = useState('menu') // 'menu', 'playing', 'paused', 'gameOver'
   const [shipColor, setShipColor] = useState('#FFFFFF')
   const [hasMounted, setHasMounted] = useState(false)
-  const [isTouchDevice, setIsTouchDevice] = useState(false)
+  const [isTouchDevice, setIsTouchDevice] = useState(false) // New state for touch detection
 
   // React renders se bachkar fast game loop — refs me store
   const keysRef = useRef<Record<string, boolean>>({})
@@ -38,7 +38,7 @@ export default function SpaceLegends() {
   const rafRef = useRef<number>(0)
   const gameRef = useRef<any>({})
   const shipColorRef = useRef('#FFFFFF')
-  const gameStateRef = useRef(gameState)
+  const gameStateRef = useRef(gameState) // Ref to track gameState inside game loop
 
   // Set mounted and touch-device state only on client
   useEffect(() => {
@@ -497,13 +497,12 @@ export default function SpaceLegends() {
       const W = canvas.width, H = canvas.height
       ctx.save()
       ctx.fillStyle = 'rgba(0,0,0,0.35)'
-      ctx.fillRect(12, 12, 280, 108)
+      ctx.fillRect(12, 12, 280, 85)
       ctx.fillStyle = '#e2e8f0'
       ctx.font = '16px system-ui, -apple-system, Segoe UI, Roboto'
-      ctx.fillText('KJSSE • SSRP', 20, 34)
-      ctx.fillText(`Score: ${game.score}`, 20, 56)
-      ctx.fillText(`Lives: ${game.lives}   Level: ${game.level}`, 20, 78)
-      ctx.fillText(`Destroyed: ${game.obstaclesDestroyed} / ${game.obstaclesToNextLevel}`, 20, 100)
+      ctx.fillText(`Score: ${game.score}`, 20, 34)
+      ctx.fillText(`Lives: ${game.lives}   Level: ${game.level}`, 20, 56)
+      ctx.fillText(`Destroyed: ${game.obstaclesDestroyed} / ${game.obstaclesToNextLevel}`, 20, 78)
       ctx.restore()
     }
 
