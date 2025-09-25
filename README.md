@@ -11,7 +11,7 @@ A classic arcade-style space shooter built with React and HTML Canvas, themed ar
 
 ## How to Run and Play
 1.  Download the source code.
-2.  install no.js if not installed already.
+2.  install node.js if not installed already.
 3.  Go to cmd and go to the location where you have stored all the files. 
 4.  Run `npm install` to install dependencies.
 5.  Run `npm run dev` to start the game.
